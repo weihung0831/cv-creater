@@ -1,6 +1,4 @@
 import { ui, experiences, projects, educationData, publicationsData, sideProjectsData, type Locale } from '../data/i18n';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 function getLocale(): Locale {
   return (localStorage.getItem('locale') as Locale) || 'en';
@@ -41,7 +39,7 @@ function applyLocale(locale: Locale) {
   rebuildPublications(locale);
   rebuildSideProjects(locale);
 
-  reinitAnimations();
+  window.dispatchEvent(new Event('locale-changed'));
 }
 
 function rebuildExperience(locale: Locale) {
@@ -122,58 +120,6 @@ function rebuildSideProjects(locale: Locale) {
       <div class="flex flex-wrap gap-1.5">${p.tags.map((t) => renderTag(t, 'sm')).join('')}</div>
     </a>
   `).join('');
-}
-
-function reinitAnimations() {
-  // Kill existing ScrollTrigger instances for rebuilt elements
-  ScrollTrigger.getAll().forEach((st) => {
-    const trigger = st.vars.trigger as HTMLElement | undefined;
-    if (trigger && (
-      trigger.closest('#experience-list') ||
-      trigger.closest('#projects-list') ||
-      trigger.closest('#education-list') ||
-      trigger.closest('#publications-list') ||
-      trigger.closest('#side-projects-list')
-    )) {
-      st.kill();
-    }
-  });
-
-  // Re-register animations for new DOM elements
-  gsap.utils.toArray<HTMLElement>('.timeline-item').forEach((item, i) => {
-    gsap.from(item, {
-      scrollTrigger: { trigger: item, start: 'top 85%' },
-      opacity: 0, x: -40, duration: 0.6, delay: i * 0.1, ease: 'power2.out',
-    });
-  });
-
-  gsap.utils.toArray<HTMLElement>('.project-card').forEach((card, i) => {
-    gsap.from(card, {
-      scrollTrigger: { trigger: card, start: 'top 85%' },
-      opacity: 0, y: 40, duration: 0.6, delay: i * 0.1, ease: 'power2.out',
-    });
-  });
-
-  // 3D tilt on project cards
-  document.querySelectorAll('.project-card').forEach((card) => {
-    const el = card as HTMLElement;
-    el.addEventListener('mousemove', (e: MouseEvent) => {
-      const rect = el.getBoundingClientRect();
-      const rotateX = ((e.clientY - rect.top) - rect.height / 2) / (rect.height / 2) * -5;
-      const rotateY = ((e.clientX - rect.left) - rect.width / 2) / (rect.width / 2) * 5;
-      el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
-    });
-    el.addEventListener('mouseleave', () => { el.style.transform = ''; });
-  });
-
-  gsap.utils.toArray<HTMLElement>('#education-list .fade-up, #publications-list .fade-up, #side-projects-list .fade-up').forEach((el) => {
-    gsap.from(el, {
-      scrollTrigger: { trigger: el, start: 'top 85%' },
-      opacity: 0, y: 30, duration: 0.6, ease: 'power2.out',
-    });
-  });
-
-  ScrollTrigger.refresh();
 }
 
 // Init
