@@ -11,6 +11,7 @@ export const ui: Record<Locale, Record<string, string>> = {
     'nav.sideProjects': 'side projects',
     'nav.contact': 'contact',
 
+    'page.title': 'Tim Hsiao — Software Engineer | Backend Developer',
     'hero.name': 'Tim Hsiao',
     'hero.greeting': '$ whoami',
     'hero.title': 'Software Engineer',
@@ -48,6 +49,7 @@ export const ui: Record<Locale, Record<string, string>> = {
     'nav.sideProjects': '作品',
     'nav.contact': '聯絡',
 
+    'page.title': '蕭偉泓 — 軟體工程師 | 後端開發',
     'hero.name': '蕭偉泓',
     'hero.greeting': '$ whoami',
     'hero.title': '軟體工程師',

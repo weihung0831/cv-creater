@@ -32,6 +32,7 @@ function applyLocale(locale: Locale) {
   if (btn) btn.textContent = locale === 'en' ? '中文' : 'EN';
 
   document.documentElement.lang = locale === 'en' ? 'en' : 'zh-Hant';
+  document.title = t['page.title'] || document.title;
 
   rebuildExperience(locale);
   rebuildProjects(locale);
