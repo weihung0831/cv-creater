@@ -11,6 +11,7 @@ Personal portfolio website with a dark sci-fi inspired design, featuring particl
 - ⌨️ Typewriter effect
 - 📜 GSAP ScrollTrigger scroll animations
 - 📱 Responsive design
+- 🌐 i18n support (English / 繁體中文)
 
 ## Tech Stack
 
@@ -55,12 +56,15 @@ src/
 │   ├── GitHub.astro            # Side projects
 │   ├── Contact.astro           # Contact info
 │   └── Footer.astro            # Back to top button
-├── scripts/                    # Animation logic
-│   ├── particles.ts            # Three.js particle background
+├── scripts/                    # Animation & i18n
 │   ├── animations.ts           # GSAP ScrollTrigger animations
-│   └── typewriter.ts           # Typewriter effect
+│   ├── particles.ts            # Three.js particle background
+│   ├── typewriter.ts           # Typewriter effect
+│   └── i18n-client.ts          # Client-side language switching
 ├── styles/global.css           # Tailwind + CSS custom properties
-└── data/resume.ts              # Centralized resume data
+└── data/
+    ├── resume.ts               # Profile (contact) + skills
+    └── i18n.ts                 # All translations (en/zh-TW)
 ```
 
 ## Sections

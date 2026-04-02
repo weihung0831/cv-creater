@@ -11,6 +11,7 @@
 - ⌨️ 打字機效果
 - 📜 GSAP ScrollTrigger 滾動動畫
 - 📱 響應式設計
+- 🌐 多語系支援（English / 繁體中文）
 
 ## 技術棧
 
@@ -55,12 +56,15 @@ src/
 │   ├── GitHub.astro            # Side Projects
 │   ├── Contact.astro           # 聯絡方式
 │   └── Footer.astro            # 回到頂部按鈕
-├── scripts/                    # 動畫邏輯
-│   ├── particles.ts            # Three.js 粒子背景
+├── scripts/                    # 動畫與 i18n
 │   ├── animations.ts           # GSAP ScrollTrigger 動畫
-│   └── typewriter.ts           # 打字機效果
+│   ├── particles.ts            # Three.js 粒子背景
+│   ├── typewriter.ts           # 打字機效果
+│   └── i18n-client.ts          # 客戶端語言切換邏輯
 ├── styles/global.css           # Tailwind + CSS custom properties
-└── data/resume.ts              # 履歷資料集中管理
+└── data/
+    ├── resume.ts               # profile（聯絡資訊）+ skills
+    └── i18n.ts                 # 所有翻譯資料（en/zh-TW）
 ```
 
 ## 頁面區塊
