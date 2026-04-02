@@ -38,6 +38,10 @@ src/
     └── i18n.ts               # 所有翻譯資料（en/zh-TW）
 ```
 
+## 已知問題與解法
+
+`docs/solutions/` — 過去解決的問題紀錄（bug、最佳實踐），按類別組織，含 YAML frontmatter（`module`、`tags`、`problem_type`）。開發或除錯相關功能前可參考。
+
 ## i18n
 
 - 預設英文，支援繁體中文切換
