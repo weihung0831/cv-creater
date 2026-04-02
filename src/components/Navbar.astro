@@ -1,0 +1,87 @@
+---
+const links = [
+  { href: '#about', key: 'nav.about' },
+  { href: '#experience', key: 'nav.experience' },
+  { href: '#projects', key: 'nav.projects' },
+  { href: '#skills', key: 'nav.skills' },
+  { href: '#education', key: 'nav.education' },
+  { href: '#publications', key: 'nav.publications' },
+  { href: '#side-projects', key: 'nav.sideProjects' },
+  { href: '#contact', key: 'nav.contact' },
+];
+---
+
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <div class="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-5 md:px-12">
+    <a href="#" class="font-mono text-lg font-bold text-accent">&gt;_ Tim.dev</a>
+
+    <div class="flex items-center gap-6">
+      <!-- Desktop nav -->
+      <ul class="hidden gap-8 md:flex">
+        {links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              data-i18n={link.key}
+              class="font-mono text-[13px] tracking-wider text-text-muted transition-colors duration-300 hover:text-accent"
+            >
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <!-- Language toggle -->
+      <button
+        id="lang-toggle"
+        class="rounded-[4px] border border-border bg-surface px-3 py-1.5 font-mono text-[11px] text-text-muted transition-all duration-300 hover:border-accent hover:text-accent"
+      >
+        中文
+      </button>
+
+      <!-- Mobile hamburger -->
+      <button id="menu-btn" class="flex flex-col gap-1.5 md:hidden" aria-label="Toggle menu">
+        <span class="block h-[2px] w-6 bg-text-muted transition-all duration-300"></span>
+        <span class="block h-[2px] w-6 bg-text-muted transition-all duration-300"></span>
+        <span class="block h-[2px] w-4 bg-text-muted transition-all duration-300"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden flex-col gap-4 border-t border-border bg-bg/95 px-6 py-6 backdrop-blur-xl md:hidden">
+    {links.map((link) => (
+      <a
+        href={link.href}
+        data-i18n={link.key}
+        class="mobile-link font-mono text-sm tracking-wider text-text-muted transition-colors duration-300 hover:text-accent"
+      >
+      </a>
+    ))}
+  </div>
+</nav>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  const menuBtn = document.getElementById('menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbar?.classList.add('bg-bg/80', 'backdrop-blur-xl', 'border-b', 'border-border');
+    } else {
+      navbar?.classList.remove('bg-bg/80', 'backdrop-blur-xl', 'border-b', 'border-border');
+    }
+  });
+
+  menuBtn?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+    mobileMenu?.classList.toggle('flex');
+  });
+
+  document.querySelectorAll('.mobile-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+      mobileMenu?.classList.remove('flex');
+    });
+  });
+</script>
