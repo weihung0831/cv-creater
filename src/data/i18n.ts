@@ -136,7 +136,7 @@ export const experiences: Record<Locale, Array<{
       location: 'Taichung',
       period: '2023/08 — 2024/03',
       description: [
-        'Controlled 10 automated connections via Python + Modbus TCP',
+        'Controlled automated equipment connections via Python + Modbus TCP',
         'Integrated Keyence sensors for real-time data collection',
         'Implemented NG/OK smart detection for automated defect inspection',
       ],
@@ -204,7 +204,7 @@ export const experiences: Record<Locale, Array<{
       location: '台中市西屯區',
       period: '2023/08 — 2024/03',
       description: [
-        '運用 Python 及 Modbus TCP 協定控制 10 連線自動化設備',
+        '運用 Python 及 Modbus TCP 協定控制機台連線自動化設備',
         '整合 Keyence 感測器進行即時數值採集',
         '實現 NG/OK 智慧判定，完成自動化缺陷檢測',
       ],
@@ -266,7 +266,7 @@ export const projects: Record<Locale, Array<{
     {
       category: 'Automation',
       title: 'Automated Inspection System',
-      description: 'Python + Modbus TCP controlling 10 connections, Keyence sensor integration, NG/OK smart detection.',
+      description: 'Python + Modbus TCP controlling equipment connections, Keyence sensor integration, NG/OK smart detection.',
       tags: ['Python', 'PyQt', 'TCP/IP', 'Keyence'],
     },
     {
@@ -310,7 +310,7 @@ export const projects: Record<Locale, Array<{
     {
       category: 'Automation',
       title: '自動化檢測系統',
-      description: 'Python + Modbus TCP 控制 10 連線設備，Keyence 感測器整合，NG/OK 智慧判定。',
+      description: 'Python + Modbus TCP 控制機台連線設備，Keyence 感測器整合，NG/OK 智慧判定。',
       tags: ['Python', 'PyQt', 'TCP/IP', 'Keyence'],
     },
     {
