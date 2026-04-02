@@ -27,10 +27,23 @@ src/
 ├── layouts/Layout.astro      # HTML shell、meta、字體載入
 ├── pages/index.astro         # 單頁，組合所有 components
 ├── components/               # 各區塊元件（Hero、Experience、Projects 等）
-├── scripts/                  # 動畫邏輯（particles.ts、animations.ts、typewriter.ts）
+├── scripts/                  # 動畫與 i18n
+│   ├── animations.ts         # GSAP ScrollTrigger 動畫
+│   ├── particles.ts          # Three.js 粒子背景
+│   ├── typewriter.ts         # 打字機效果
+│   └── i18n-client.ts        # 客戶端語言切換邏輯
 ├── styles/global.css         # Tailwind directives + CSS custom properties
-└── data/resume.ts            # 所有履歷資料集中管理
+└── data/
+    ├── resume.ts             # profile（聯絡資訊）+ skills
+    └── i18n.ts               # 所有翻譯資料（en/zh-TW）
 ```
+
+## i18n
+
+- 預設英文，支援繁體中文切換
+- 所有可見文字放 `src/data/i18n.ts`，不要寫死在 component 裡
+- 靜態文字用 `data-i18n` 屬性，動態區塊（Experience、Projects 等）由 `i18n-client.ts` 重建 DOM
+- 切換語言後會自動重新註冊 GSAP ScrollTrigger 動畫
 
 ## Design System
 
